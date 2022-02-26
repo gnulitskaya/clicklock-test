@@ -1,0 +1,66 @@
+body {
+  background-color: lavender;
+}
+
+.wrapper {
+  max-width: 600px;
+  height: 100vh;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
+  text-align: center;
+}
+
+.wrap-btn{
+  display: flex;
+  align-items: center;
+  margin: 0px auto;
+}
+
+.btn {
+  width: 440px;
+  height: 65px;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+input[type="checkbox"] {
+  width: 40px;
+  height: 40px;
+  margin-left: 30px;
+}
+input[type="text"] {
+  width:100%;
+  border:2px solid #aaa;
+  border-radius:4px;
+  margin-top: 50px;
+  outline:none;
+  padding:8px;
+  box-sizing:border-box;
+  transition:.3s;
+}
+input[type=text]:focus{
+  border-color:rgba(46, 229, 157, 0.4);
+  box-shadow:0 0 22px 0 rgba(46, 229, 157, 0.4);
+}
+span {
+  margin-top: 50px;
+}

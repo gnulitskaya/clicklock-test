@@ -1,0 +1,28 @@
+<!-- Страница загрузилась
+<btn>0</btn> <textbox></textbox> <checkbox></checkbox> <span>-1</span>
+
+Клик на кнопку
+<btn>1</btn> <textbox></textbox> <checkbox></checkbox> <span>2020-04-08T10:10:10, -1</span>
+
+Еще раз клик на кнопку
+<btn>2</btn> <textbox></textbox> <checkbox></checkbox> <span>2020-04-08T10:10:15, -1</span>
+
+в текстбокс ввели 10
+<btn>2</btn> <textbox>10</textbox> <checkbox></checkbox> <span>2020-04-08T10:10:15, 20</span>
+
+щелкнули чекбокс
+<btn>2</btn> <textbox>10</textbox> {значение не кратно 3} <checkbox>X</checkbox> <span>2020-04-08T10:10:15, 20</span>
+
+стерли данные в текстбоксе
+<btn>2</btn> <textbox></textbox> {значение не кратно 3, поле обязат} <checkbox>X</checkbox> <span>2020-04-08T10:10:15, 20</span> -->
+
+<form [formGroup]="clickForm" (ngSubmit)="submit()">
+<div class="wrapper">
+<div class='wrap-btn'>
+<button class='btn'>Я тут хулиганю</button>
+<!-- make input field required -->
+<input type="checkbox" formControlName="checked">
+</div><input type="text" formControlName='number' allownumbersonly>
+<span>Вывожу дату хулиганства и циферки</span>
+</div>
+</form>
