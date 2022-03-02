@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@datorama/akita';
+import { Store, StoreConfig } from '@datorama/akita';
 
 export interface ICheckedEvent {
 	text: number | null,
@@ -14,6 +14,7 @@ export function createInitialState(): ICheckedEvent {
 }
 
 @Injectable()
+@StoreConfig({ name: 'cheked' })
 export class CheckedCreateStore extends Store<ICheckedEvent>{
   constructor() {
     super(createInitialState());

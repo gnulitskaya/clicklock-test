@@ -1,3 +1,4 @@
+import { CheckedService } from './../state/checked.service';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
 
@@ -8,8 +9,8 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn 
 })
 export class ClicklockComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private _checkedCreateService: CheckedService) { }
+  counter: number = 0;
   ngOnInit(): void {
   }
 
@@ -19,7 +20,8 @@ export class ClicklockComponent implements OnInit {
   });
 
   submit() {
-
+    // this._checkedCreateService.updateChecked({})
+    this.counter++
   }
 
 }

@@ -1,3 +1,5 @@
+import { CheckedService } from './state/checked.service';
+import { CheckedCreateStore } from './state/checked.store';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,9 +16,10 @@ import { AllownumbersonlyDirective } from './directives/allownumbersonly.directi
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [CheckedCreateStore,
+    CheckedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
