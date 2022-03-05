@@ -1,4 +1,4 @@
-import { ClickStore } from './state/click.store';
+import { ClickStore, ClickQuery } from './state/click.store';
 import { ClickService } from './state/click.service';
 import { CheckedService } from './state/checked.service';
 import { CheckedCreateStore } from './state/checked.store';
@@ -23,6 +23,7 @@ import { AllownumbersonlyDirective } from './directives/allownumbersonly.directi
   providers: [CheckedCreateStore,
     CheckedService,
     ClickStore,
+    ClickQuery,
     ClickService],
   bootstrap: [AppComponent]
 })

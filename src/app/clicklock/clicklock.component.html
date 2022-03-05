@@ -19,10 +19,12 @@
 <form [formGroup]="clickForm" (ngSubmit)="submit()">
 <div class="wrapper">
 <div class='wrap-btn'>
-<button class='btn'>Я тут хулиганю {{counter}}</button>
+<button [disabled]="clickForm.invalid || (clickForm.get('input')?.value % 3 !== 0 && isChecked == true)" class='btn'>Я тут хулиганю {{counter}}</button>
 <!-- make input field required -->
 <input type="checkbox" formControlName="checked">
-</div><input type="text" formControlName='number' allownumbersonly>
+</div><input type="text" formControlName='input' allownumbersonly>
+<div *ngIf="(clickForm.get('input')?.value % 3 !== 0) && isChecked == true">not divided by 3</div>
+<div *ngIf="clickForm.get('input')?.invalid">input is required.</div>
 <span>Вывожу дату хулиганства и циферки {{date}}</span>
 </div>
 </form>

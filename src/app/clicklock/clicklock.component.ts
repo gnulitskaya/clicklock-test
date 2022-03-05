@@ -1,7 +1,7 @@
 import { ClickService } from './../state/click.service';
 import { CheckedService } from './../state/checked.service';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-clicklock',
@@ -15,14 +15,28 @@ export class ClicklockComponent implements OnInit {
 
     counter: number = 0;
     date?: Date;
+    isChecked: boolean = false;
+
+    clickForm = new FormGroup({
+      input: new FormControl(null),
+      checked: new FormControl(false)
+    });
 
   ngOnInit(): void {
+    this.clickForm.get('checked')?.valueChanges.subscribe(v => {
+      if(v) {this.clickForm.get('input')?.setValidators(Validators.required);
+      // this.clickForm.get('input')?.value % 3 == 0;
+      this.isChecked = true;
+      console.log('checked')}
+      else {
+        this.clickForm.get('input')?.setValidators(null);
+        this.isChecked = false;
+        console.log('NOT checked')
+      }
+      // console.log('checked (v = v % 3 == 0)', this.clickForm.get('checked'));
+      this.clickForm.get('input')?.updateValueAndValidity();
+    })
   }
-
-  clickForm = new FormGroup({
-    number: new FormControl(''),
-    checked: new FormControl('')
-  });
 
   submit() {
     // this._checkedCreateService.updateChecked({})
@@ -30,6 +44,6 @@ export class ClicklockComponent implements OnInit {
     this.clickService.updateClick();
     this.counter = this.clickService.counter;
     this.date = this.clickService.myDate;
-  }
 
+  }
 }
