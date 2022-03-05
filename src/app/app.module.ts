@@ -1,3 +1,5 @@
+import { ClickStore } from './state/click.store';
+import { ClickService } from './state/click.service';
 import { CheckedService } from './state/checked.service';
 import { CheckedCreateStore } from './state/checked.store';
 import { NgModule } from '@angular/core';
@@ -19,7 +21,9 @@ import { AllownumbersonlyDirective } from './directives/allownumbersonly.directi
     ReactiveFormsModule,
   ],
   providers: [CheckedCreateStore,
-    CheckedService],
+    CheckedService,
+    ClickStore,
+    ClickService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
