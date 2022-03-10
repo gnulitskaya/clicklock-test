@@ -1,22 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Store, StoreConfig } from '@datorama/akita';
+import {Query, Store, StoreConfig} from '@datorama/akita';
 
-export interface ICheckedEvent {
+export interface CheckedState {
 	text: number | null,
 	isChecked: boolean
 }
 
-export function createInitialState(): ICheckedEvent {
+export function createInitialState(): CheckedState {
   return {
     text: null,
     isChecked: false
   };
 }
 
-@Injectable()
-@StoreConfig({ name: 'cheked' })
-export class CheckedCreateStore extends Store<ICheckedEvent>{
+@Injectable({providedIn: 'root'})
+@StoreConfig({ name: 'checked' })
+export class CheckedStore extends Store<CheckedState>{
   constructor() {
     super(createInitialState());
+  }
+}
+
+@Injectable({providedIn: 'root'})
+export class CheckedQuery extends Query<CheckedState> {
+  constructor(protected store: CheckedStore) {
+    super(store);
   }
 }

@@ -16,15 +16,15 @@
 стерли данные в текстбоксе
 <btn>2</btn> <textbox></textbox> {значение не кратно 3, поле обязат} <checkbox>X</checkbox> <span>2020-04-08T10:10:15, 20</span> -->
 
-<form [formGroup]="clickForm" (ngSubmit)="submit()">
+<form [formGroup]="clickForm">
 <div class="wrapper">
 <div class='wrap-btn'>
-<button [disabled]="clickForm.invalid || (clickForm.get('input')?.value % 3 !== 0 && isChecked == true)" class='btn'>Я тут хулиганю {{counter}}</button>
+<button (click)="click()" class='btn'>инкременчу <b>{{(getCount$ | async)}}</b></button>
 <!-- make input field required -->
 <input type="checkbox" formControlName="checked">
-</div><input type="text" formControlName='input' allownumbersonly>
-<div *ngIf="(clickForm.get('input')?.value % 3 !== 0) && isChecked == true">not divided by 3</div>
-<div *ngIf="clickForm.get('input')?.invalid">input is required.</div>
-<span>Вывожу дату хулиганства и циферки {{date}}</span>
+</div><input type="text" formControlName='input'>
+<!--<div *ngIf="(clickForm.get('input')?.value % 3 !== 0) && isChecked == true">not divided by 3</div>-->
+<!--<div *ngIf="clickForm.get('input')?.invalid">input is required.</div>-->
+<span>{{(getLast$ | async)?.id }} Вывожу дату и циферки <b>{{(getLast$ | async)?.clickTime}}</b> </span>
 </div>
 </form>
