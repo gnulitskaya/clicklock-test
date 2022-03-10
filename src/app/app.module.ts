@@ -1,7 +1,7 @@
 import { ClickStore, ClickQuery } from './state/click.store';
 import { ClickService } from './state/click.service';
 import { CheckedService } from './state/checked.service';
-import { CheckedCreateStore } from './state/checked.store';
+import { CheckedStore } from './state/checked.store';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,7 +20,7 @@ import { AllownumbersonlyDirective } from './directives/allownumbersonly.directi
     BrowserModule,
     ReactiveFormsModule,
   ],
-  providers: [CheckedCreateStore,
+  providers: [CheckedStore,
     CheckedService,
     ClickStore,
     ClickQuery,

@@ -1,19 +1,17 @@
-import { ClickStore, ClickQuery } from './click.store';
+import { ClickStore } from './click.store';
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 
 export class ClickService {
-  constructor(private _store: ClickStore, _query: ClickQuery) {}
+  constructor(private _store: ClickStore) {}
 
-  counter: number = 0;
-  myDate?: Date;
+  private counter: number = 0;
 
   updateClick() {
     this.counter++;
-    this.myDate = new Date();
-    // this.myDate.toString();
-    this._store.update({id: this.counter, clickTime: this.myDate});
+    this._store.update({id: this.counter, clickTime: new Date().toString()});
+
     console.log(this._store);
   }
 }
