@@ -16,15 +16,36 @@
 стерли данные в текстбоксе
 <btn>2</btn> <textbox></textbox> {значение не кратно 3, поле обязат} <checkbox>X</checkbox> <span>2020-04-08T10:10:15, 20</span> -->
 
-<form [formGroup]="clickForm">
+<form [formGroup]="clickForm" (ngSubmit)="submit()">
 <div class="wrapper">
 <div class='wrap-btn'>
-<button (click)="click()" class='btn'>инкременчу <b>{{(getCount$ | async)}}</b></button>
+<button class='btn'>инкременчу <b>{{(getCount$ | async)}}</b></button>
 <!-- make input field required -->
 <input type="checkbox" formControlName="checked">
-</div><input type="text" formControlName='input'>
-<!--<div *ngIf="(clickForm.get('input')?.value % 3 !== 0) && isChecked == true">not divided by 3</div>-->
-<!--<div *ngIf="clickForm.get('input')?.invalid">input is required.</div>-->
+</div><input type="text" formControlName='input' allownumbersonly>
+<div *ngIf="(clickForm.get('input')?.value % 3 !== 0)">not divided by 3</div>
+<div *ngIf="this.clickForm.controls.input.errors?.required">input is required.</div>
 <span>{{(getLast$ | async)?.id }} Вывожу дату и циферки <b>{{(getLast$ | async)?.clickTime}}</b> </span>
+<span>{{getCheckData$ | async}}</span>
+<ol>
+  <li>Сделать 2 akita стора, один 'EntityStore IClickEvent, другой обычный стор.</li>
+  <li>При каждом клике на кнопку button, в EntityStore добавляется новая запись о событии клика с новым инкрементным айдишником.</li>
+  <li>Второй Store содержит текст из textbox и состояние чекбокса</li>
+  <li>Для текстбокса нужно написать директиву, которая предотвращает ввод символов любых, кроме чисел.</li>
+  <li>    При клике на чекбокс у textbox включается валидатор, который
+    а) делает поле обязательным для ввода
+    б) Принимает только числа кратные трем</li>
+  <li>При отсутствии галки соотвественно валидаторы выключаются.</li>
+  <li>Ошибки валидации выводить рядом с контролом textbox понятным русским текстом.</li>
+  <li>Реализовать все на Reactive forms.</li>
+  <li>Текст на кнопке button показывает кол-во записей в EntityStore.</li>
+  <li>в span выводить последний clickTime из EntityStore, а также удвоенное значение из textbox. Если значения в текстбоксе нет, выводим -1.</li>
+
+</ol>
 </div>
+
 </form>
+
+
+
+

@@ -10,7 +10,7 @@ export class ClickService {
 
   updateClick() {
     this.counter++;
-    this._store.update({id: this.counter, clickTime: new Date().toString()});
+    this._store.add({id: this.counter, clickTime: new Date().toString()});
 
     console.log(this._store);
   }
