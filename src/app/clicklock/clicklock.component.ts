@@ -7,6 +7,7 @@ import {CheckedQuery} from "../state/checked.store";
 import {Observable, Subject} from "rxjs";
 import {IClickEvent} from "../state/click.interface";
 import {filter, map, takeUntil, tap} from "rxjs/operators";
+import { dividedNameValidator } from '../directives/divided.directive';
 
 @Component({
   selector: 'app-clicklock',
@@ -23,9 +24,9 @@ export class ClicklockComponent implements OnInit, OnDestroy {
     takeUntil(this.destroy$)
   )
 
-  public getCount$: Observable<number> = this._clickQuery.getCountOfEntity().pipe(
-    takeUntil(this.destroy$)
-  )
+  // public getCount$: Observable<number> = this._clickQuery.getCountOfEntity().pipe(
+  //   takeUntil(this.destroy$)
+  // )
 
   public getCheckData$: Observable<number> = this._checkedQuery.select(v => v.text).pipe(
     tap(val => console.log('dcsdc',val)),
@@ -67,7 +68,7 @@ export class ClicklockComponent implements OnInit, OnDestroy {
       tap(
         (check) => {
           if(check) {
-            this.clickForm.controls.input.setValidators([Validators.required])
+            this.clickForm.controls.input.setValidators([Validators.required, dividedNameValidator()])
             this.clickForm.get('input')?.value % 3 == 0;
           } else {
             this.clickForm.controls.input.setValidators(null);

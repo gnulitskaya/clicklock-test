@@ -19,13 +19,13 @@
 <form [formGroup]="clickForm" (ngSubmit)="submit()">
 <div class="wrapper">
 <div class='wrap-btn'>
-<button class='btn'>инкременчу <b>{{(getCount$ | async)}}</b></button>
+<button class='btn'>инкременчу <b>{{(getLast$ | async)?.id }}</b></button>
 <!-- make input field required -->
 <input type="checkbox" formControlName="checked">
 </div><input type="text" formControlName='input' allownumbersonly>
-<div *ngIf="(clickForm.get('input')?.value % 3 !== 0)">not divided by 3</div>
-<div *ngIf="this.clickForm.controls.input.errors?.required">input is required.</div>
-<span>{{(getLast$ | async)?.id }} Вывожу дату и циферки <b>{{(getLast$ | async)?.clickTime}}</b> </span>
+<div class='error' *ngIf="this.clickForm.controls.input.errors?.dividedName">not divided by 3</div>
+<div class='error' *ngIf="this.clickForm.controls.input.errors?.required">input is required.</div>
+<span>Вывожу дату и циферки <b>{{(getLast$ | async)?.clickTime}}</b> </span>
 <span>{{getCheckData$ | async}}</span>
 <ol>
   <li>Сделать 2 akita стора, один 'EntityStore IClickEvent, другой обычный стор.</li>
